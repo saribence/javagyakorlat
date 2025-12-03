@@ -1,12 +1,20 @@
 
 package com.example.javagyakszi;
 
-public class Station {
+import jakarta.persistence.*;
 
+@Entity
+public class Station {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int station_id;
+    @Column(name = "station_name")
     private String station_name;
+    @Column(name = "max")
     private int max;
+    @Column(name = "lat")
     private double lat;
+    @Column(name = "lon")
     private double lon;
 
 
@@ -19,6 +27,7 @@ public class Station {
     }
 
     public Station() {
+
     }
 
     public int getStation_id() {
@@ -60,7 +69,6 @@ public class Station {
     public void setLon(double lon) {
         this.lon = lon;
     }
-
 
     @Override
     public String toString() {
