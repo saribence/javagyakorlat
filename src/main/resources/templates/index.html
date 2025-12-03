@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<div>
+    <h1>Dolgozók</h1>
+    <a href="/uj">Új dolgozót hozzáad</a>
+    <br/><br/>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Station Név</th>
+            <th>MAX</th>
+            <th>LAT</th>
+            <th>LON</th>
+            <th>Műveletek</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="st : ${stations}">
+            <td th:text="${st.station_id}"></td>
+            <td th:text="${st.stationName}"></td>
+            <td th:text="${st.max}"></td>
+            <td th:text="${st.lat}"></td>
+            <td th:text="${st.lon}"></td>
+            <td>
+                <a th:href="@{'/edit/'+${st.id}}">Edit</a>&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/'+${st.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

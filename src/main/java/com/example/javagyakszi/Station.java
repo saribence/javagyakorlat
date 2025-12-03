@@ -2,6 +2,7 @@
 package com.example.javagyakszi;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Station {
@@ -9,7 +10,8 @@ public class Station {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int station_id;
     @Column(name = "station_name")
-    private String station_name;
+    @Size(min = 5, max = 100, message = "A név hossza 5 és 100 karakter között legyen!")
+    private String stationName;
     @Column(name = "max")
     private int max;
     @Column(name = "lat")
@@ -20,7 +22,7 @@ public class Station {
 
     public Station(int station_id, String station_name, int max, double lat, double lon) {
         this.station_id = station_id;
-        this.station_name = station_name;
+        this.stationName = station_name;
         this.max = max;
         this.lat = lat;
         this.lon = lon;
@@ -38,12 +40,12 @@ public class Station {
         this.station_id = station_id;
     }
 
-    public String getStation_name() {
-        return station_name;
+    public String getStationName() {
+        return stationName;
     }
 
-    public void setStation_name(String station_name) {
-        this.station_name = station_name;
+    public void setStationName(String stationName) {
+        this.stationName = stationName;
     }
 
     public int getMax() {
@@ -74,7 +76,7 @@ public class Station {
     public String toString() {
         return "Station{" +
                 "station_id=" + station_id +
-                ", station_name='" + station_name + '\'' +
+                ", station_name='" + stationName + '\'' +
                 ", max=" + max +
                 ", lat=" + lat +
                 ", lon=" + lon +
